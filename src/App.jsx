@@ -1,22 +1,23 @@
-import Navbar from "./components/Navbar";
-import Header from "./components/Header";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Stats from "./components/Stats";
-import Contact from "./components/Contact";
+import About from "./components/About/About";
+import Skills from "./components/Skills/Skills";
+import Experience from "./components/Experience/Experience";
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Header />
+    <>
       <About />
-      <Skills />
-      <Projects />
-      <Stats />
-      <Contact />
-    </div>
+
+      <div className={styles.rowSection}>
+        <Skills />
+        <Experience />
+      </div>
+
+      {/* Other sections */}
+      {/* <Projects /> */}
+      {/* <Stats /> */}
+      {/* <Contact /> */}
+    </>
   );
 }
 

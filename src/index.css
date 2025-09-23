@@ -1,51 +1,16 @@
 :root {
-  /* Neutral base colors */
-  --color-bg: #000000;
-  --color-bg-alt: #1a1a1a;
-  --color-card: #232323;
-  --color-white: #ffffff;
-  --color-text: #eaeaea;
-  
-  /* Neon accent palette */
-  --color-neon-pink: #FF00CC;
-  --color-neon-green: #39FF14;
-  --color-neon-blue: #00FFFF;
-  --color-neon-yellow: #FFF700;
-  --color-neon-purple: #AD1CFF;
+  /* Base Colors */
+  --color-bg: #fafafa; /* Soft off-white background */
+  --color-bg-alt: #ffffff; /* White for cards/containers */
+  --color-text: #111111; /* Almost black text for readability */
+  --color-text-secondary: #555555; /* Medium gray for secondary content */
+  --color-border: #ddd; /* Light gray borders */
+  --color-shadow: rgba(0, 0, 0, 0.05); /* Very soft shadow */
 
-  /* Shading and effect colors */
-  --color-border: #444444;
-  --color-shadow: 0 0 18px var(--color-neon-pink), 0 0 4px var(--color-neon-blue);
+  /* Accent and Highlights */
+  --color-accent: #888888; /* Muted gray accent for interactive elements */
+  --color-accent-hover: #444444; /* Darker accent for hover/focus */
 
-  /* Gradients */
-  --gradient-neon: linear-gradient(90deg, var(--color-neon-pink), var(--color-neon-blue), var(--color-neon-green));
-  --gradient-purple: linear-gradient(90deg, var(--color-neon-purple), var(--color-neon-blue));
-}
-
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-}
-
-.card {
-  background: var(--color-card);
-  box-shadow: var(--color-shadow);
-  border: 2px solid var(--color-neon-pink);
-}
-
-a, button {
-  color: var(--color-white);
-  background: var(--color-neon-pink);
-  transition: background 0.2s;
-}
-
-a:hover, button:hover {
-  background: var(--color-neon-blue);
-  color: var(--color-neon-yellow);
-}
-
-h1, h2, h3 {
-  background: var(--gradient-neon);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Smooth Transitions */
+  --transition-speed: 0.35s;
 }

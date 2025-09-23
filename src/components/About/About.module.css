@@ -1,0 +1,70 @@
+.section {
+  margin: 20px auto;
+  margin-top: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  background-color: var(--color-bg-alt);
+  border-radius: 16px;
+  border: 2px solid var(--color-border);
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center; /* vertically align text + image */
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap; /* allows wrapping on small screens */
+}
+
+.textContent {
+  flex: 1;
+  min-width: 280px;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--color-heading);
+}
+
+.text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 16px; /* replaces <br /> */
+  color: var(--color-text);
+}
+
+.imageContent {
+  flex-shrink: 0; /* prevents image from shrinking too much */
+}
+
+.profileImage {
+  height: 280px;
+  width: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-border);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.profileImage:hover {
+  transform: scale(1.05); /* subtle hover zoom effect */
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column; /* stack text & image */
+    text-align: center;
+  }
+
+  .textContent {
+    order: 2; /* put text below image */
+  }
+
+  .imageContent {
+    order: 1; /* image comes first on mobile */
+  }
+}
