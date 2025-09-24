@@ -19,14 +19,4 @@ export const socials = [
     url: "https://www.naukri.com/code360/profile/VishalBhat",
     display: "code360/profile/VishalBhat",
   },
-  {
-    name: "Email",
-    url: "mailto:vishalkbhat.cs23@rvce.edu.in",
-    display: "vishalkbhat.cs23@rvce.edu.in",
-  },
-  {
-    name: "Portfolio",
-    url: "https://vishal-bhat-portfolio.vercel.app/work/work.html",
-    display: "vishal-bhat-portfolio.vercel.app/work/work.html",
-  },
 ];
