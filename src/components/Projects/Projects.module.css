@@ -1,68 +1,164 @@
 .section {
-  background: var(--color-card);
-  padding: 2rem 1.5rem;
-  margin: 2rem auto;
-  max-width: 1000px;
-  border: 2px solid var(--color-neon-yellow);
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 1200px;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
-  box-shadow: 0 0 20px var(--color-neon-yellow);
-  color: var(--color-white);
+  width: 90%;
+  background: var(--color-bg-alt);
 }
 
 .headingMain {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-align: center;
-  background: var(--gradient-neon);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.category {
   font-size: 2rem;
-  font-weight: 600;
-  margin: 1.5rem 0 1rem;
-  color: var(--color-neon-yellow);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: var(--gradient-neon);
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 2rem;
 }
 
-.table thead tr {
-  border-bottom: 2px solid var(--color-neon-yellow);
+.tab {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.table th,
-.table td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  color: var(--color-gray);
-  border-bottom: 1px solid var(--color-border);
-  vertical-align: middle;
+.tab:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
 }
 
-.table th {
-  color: var(--color-neon-yellow);
-  font-weight: 700;
+.activeTab {
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-weight: 600;
 }
 
-.table tbody tr:hover {
-  background: var(--color-bg-alt);
-  box-shadow: inset 0 0 10px var(--color-neon-yellow);
+/* Cards Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 20px;
 }
 
-.table a {
-  color: var(--color-neon-yellow);
+/* Card */
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+.cardPreview {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures image scales nicely */
+  transition: transform 0.3s ease-in-out;
+}
+
+.cardPreview:hover .previewImage {
+  transform: scale(1.05); /* zoom effect on hover */
+}
+
+.previewPlaceholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Hover Arrow */
+.hoverArrow {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--color-accent);
+  border-radius: 30%;
+  padding: 6px;
+  color: var(--color-bg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cardPreview:hover .hoverArrow {
+  opacity: 1;
+}
+
+/* Card Content */
+.cardContent {
+  padding: 16px;
+}
+
+.projectTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.projectDesc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+  min-height: 50px;
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contributeBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-.table a:hover,
-.table a:focus {
-  color: var(--color-neon-blue);
-  outline: none;
+.contributeBtn:hover {
+  background: var(--color-text);
+}
+
+.status {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-accent);
 }

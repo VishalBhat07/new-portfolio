@@ -1,7 +1,9 @@
 import About from "./components/About/About";
 import Skills from "./components/Skills/Skills";
 import Experience from "./components/Experience/Experience";
+
 import styles from "./App.module.css";
+import Projects from "./components/Projects/Projects";
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       </div>
 
       {/* Other sections */}
-      {/* <Projects /> */}
+      <Projects />
       {/* <Stats /> */}
       {/* <Contact /> */}
     </>
