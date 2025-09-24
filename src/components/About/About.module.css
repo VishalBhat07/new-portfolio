@@ -1,7 +1,7 @@
 .section {
-  margin: 20px auto;
+  margin: 16px auto;
   margin-top: 40px;
-  padding: 40px;
+  padding: 32px;
   max-width: 1200px;
   background-color: var(--color-bg-alt);
   border-radius: 16px;
@@ -12,10 +12,10 @@
 
 .contentWrapper {
   display: flex;
-  align-items: center; /* vertically align text + image */
+  align-items: center;
   justify-content: space-between;
   gap: 40px;
-  flex-wrap: wrap; /* allows wrapping on small screens */
+  flex-wrap: wrap;
 }
 
 .textContent {
@@ -32,12 +32,52 @@
 .text {
   font-size: 1.05rem;
   line-height: 1.6;
-  margin-bottom: 16px; /* replaces <br /> */
+  margin-bottom: 16px;
   color: var(--color-text);
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.button {
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.buttonOutline {
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.buttonOutline:hover {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
 .imageContent {
-  flex-shrink: 0; /* prevents image from shrinking too much */
+  flex-shrink: 0;
 }
 
 .profileImage {
@@ -51,20 +91,77 @@
 }
 
 .profileImage:hover {
-  transform: scale(1.05); /* subtle hover zoom effect */
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
   .contentWrapper {
-    flex-direction: column; /* stack text & image */
+    flex-direction: column;
     text-align: center;
   }
 
   .textContent {
-    order: 2; /* put text below image */
+    order: 2;
   }
 
   .imageContent {
-    order: 1; /* image comes first on mobile */
+    order: 1;
   }
+
+  .buttonGroup {
+    justify-content: center;
+  }
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--color-heading);
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.button,
+.buttonOutline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.button {
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+}
+
+.button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.buttonOutline {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.buttonOutline:hover {
+  background-color: var(--color-accent);
+  color: #fff;
 }

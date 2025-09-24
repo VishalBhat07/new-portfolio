@@ -12,11 +12,11 @@ export const socials = [
   {
     name: "CodeForces",
     url: "https://codeforces.com/profile/VishalBhat07",
-    display: "codeforces.com/profile/VishalBhat07",
+    display: "codeforces.com/profile/VishalBhat07/",
   },
   {
     name: "CodingNinjas",
     url: "https://www.naukri.com/code360/profile/VishalBhat",
-    display: "code360/profile/VishalBhat",
+    display: "code360/profile/VishalBhat/",
   },
 ];

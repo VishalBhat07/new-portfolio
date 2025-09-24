@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./About.module.css";
+import { Download, Github } from "lucide-react";
 
-export default function Home() {
+export default function About() {
   return (
     <section id="about" className={styles.section}>
       <div className={styles.aboutCard}>
@@ -9,23 +10,44 @@ export default function Home() {
           <div className={styles.textContent}>
             <h2 className={styles.heading}>About Me</h2>
             <p className={styles.text}>
-              Hey there! I'm <strong>Vishal Bhat</strong>, a passionate Computer
-              Science student at RV College of Engineering with an appetite for
-              creating innovative digital solutions. With over 50 projects
-              spanning web development, machine learning, and hardware
-              engineering, I've mastered the art of transforming complex ideas
-              into elegant, scalable applications.
+              Hi! I'm <strong className={styles.accent}>Vishal Bhat</strong>, a
+              Computer Science student at RVCE. I love building web, ML, and
+              hardware projects that transform ideas into real-world
+              applications.
             </p>
 
             <p className={styles.text}>
-              My expertise lies in full-stack development using the MERN stack,
-              where I've built everything from cryptocurrency trackers and food
-              delivery platforms to AI-powered applications and real-time chat
-              systems. As an active contributor to the tech community, I've
-              developed projects for hackathons, led workshops, and contributed
-              to open-source initiatives while sharpening my skills in
-              competitive programming.
+              I specialize in full-stack development (MERN) and have worked on
+              over 50 projects ranging from cryptocurrency trackers, AI-powered
+              apps, to real-time chat systems. I am also an active participant
+              in hackathons, open-source contributions, and competitive
+              programming contests.
             </p>
+
+            <p className={styles.text}>
+              Outside coding, I enjoy exploring new technologies, learning AI/ML
+              techniques, and sharing knowledge through workshops and mentoring
+              sessions. My goal is to create impactful solutions that can
+              benefit communities and industries alike.
+            </p>
+
+            <div className={styles.buttonGroup}>
+              <a
+                href="/VishalBhat.pdf"
+                download
+                className={styles.button}
+              >
+                <Download size={18} /> <span>Download Resume</span>
+              </a>
+              <a
+                href="https://github.com/VishalBhat07"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.buttonOutline}
+              >
+                <Github size={18} /> <span>Visit GitHub</span>
+              </a>
+            </div>
           </div>
 
           <div className={styles.imageContent}>

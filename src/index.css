@@ -8,9 +8,15 @@
   --color-shadow: rgba(0, 0, 0, 0.05); /* Very soft shadow */
 
   /* Accent and Highlights */
-  --color-accent: #888888; /* Muted gray accent for interactive elements */
-  --color-accent-hover: #444444; /* Darker accent for hover/focus */
+  --color-accent: rgb(
+    206,
+    64,
+    95
+  ); /* Muted gray accent for interactive elements */
+  --color-accent-hover: rgb(159, 36, 62); /* Darker accent for hover/focus */
 
   /* Smooth Transitions */
   --transition-speed: 0.35s;
 }
+
+/* #DD5025 #39120B #DAD0D1 */

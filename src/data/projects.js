@@ -231,7 +231,7 @@ export const projects = [
     ],
   },
   {
-    category: "Contributions",
+    category: "ACM Contributions",
     items: [
       {
         name: "ACM techTank Hackathon",
