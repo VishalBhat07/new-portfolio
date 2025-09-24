@@ -9,6 +9,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { socials } from "../../data/socials";
+import { toast } from "react-toastify";
 
 const socialIcons = {
   LinkedIn: <Linkedin size={20} />,
@@ -18,6 +19,11 @@ const socialIcons = {
   CodeForces: <ExternalLink size={20} />,
   CodingNinjas: <ExternalLink size={20} />,
 };
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  toast.success("Message sent");
+}
 
 export default function Contact() {
   return (
@@ -61,17 +67,24 @@ export default function Contact() {
         </div>
 
         {/* Contact Form */}
-        <form className={styles.form}>
-          <input type="text" placeholder="Your Name" className={styles.input} />
+        <form className={styles.form} onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            placeholder="Your Name"
+            className={styles.input}
+            required="true"
+          />
           <input
             type="email"
             placeholder="Your Email"
             className={styles.input}
+            required="true"
           />
           <textarea
             placeholder="Your Message"
             rows="5"
             className={styles.textarea}
+            required="true"
           ></textarea>
           <button type="submit" className={styles.button}>
             <Send size={16} /> Send Message

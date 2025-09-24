@@ -5,6 +5,7 @@ import Experience from "./components/Experience/Experience";
 import styles from "./App.module.css";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Projects />
       {/* <Stats /> */}
       <Contact />
+      <ToastContainer />
     </>
   );
 }
