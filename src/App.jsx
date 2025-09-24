@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <>
+    <div className={styles.container}>
       <About />
 
       <div className={styles.rowSection}>
@@ -22,7 +22,7 @@ function App() {
       {/* <Stats /> */}
       <Contact />
       <ToastContainer />
-    </>
+    </div>
   );
 }
 

@@ -6,12 +6,21 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.rowSection {
-  margin: 16px auto;
+.container {
   max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rowSection {
+  /* margin: 16px auto; */
+  /* max-width: 1200px; */
   background-color: var(--color-bg-alt);
   border-radius: 16px;
-  width: 90%;
+  /* width: 90%; */
   box-sizing: border-box;
   display: flex;
   gap: 16px;
@@ -24,4 +33,14 @@
 /* Experience should take 30% */
 .rowSection > :nth-child(2) {
   flex: 1;
+}
+
+@media (max-width: 900px) {
+  .rowSection {
+    flex-direction: column;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0;
+  }
 }

@@ -53,7 +53,7 @@ export default function About() {
           <div className={styles.imageContent}>
             <img
               className={styles.profileImage}
-              src="/pfp.heic"
+              src="/pfp.png"
               alt="Vishal Bhat"
             />
           </div>

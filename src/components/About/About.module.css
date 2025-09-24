@@ -1,12 +1,12 @@
 .section {
-  margin: 16px auto;
-  margin-top: 40px;
+  /* margin: 16px auto; */
+  /* margin-top: 40px; */
   padding: 32px;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   background-color: var(--color-bg-alt);
   border-radius: 16px;
   border: 2px solid var(--color-border);
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
 }
 
