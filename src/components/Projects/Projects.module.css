@@ -47,7 +47,7 @@
 /* Cards Grid */
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
@@ -122,13 +122,13 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 .projectDesc {
   font-size: 0.9rem;
   color: var(--color-text-secondary);
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   min-height: 50px;
 }
 
