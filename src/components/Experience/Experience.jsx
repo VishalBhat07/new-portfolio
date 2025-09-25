@@ -5,22 +5,27 @@ import styles from "./Experience.module.css";
 const experienceData = [
   {
     role: "Web Developer",
-    company: "ACM RVCE",
+    company: "ACM RVCE Student Chapter",
     timeline: "Jan 2024 - Present",
     description: [
-      "Developed and maintained club websites and event platforms using React and MERN stack.",
-      "Integrated interactive dashboards and real-time features for hackathons and coding events.",
-      "Collaborated with a team of 5 developers to design responsive layouts and optimize user experience.",
+      "Built and deployed the official ACM RVCE website to showcase chapter activities and resources.",
+      "Developed a full-stack hackathon management platform (TechTank Hackathon) with live deployment.",
+      "Created interactive event platforms like ACM Squid Games for the RVCE SIP 2025 program.",
+      "Organized and conducted beginner-friendly workshops on Generative AI and web development basics.",
+      "Collaborated with fellow developers to design responsive, engaging, and scalable applications.",
     ],
   },
   {
     role: "Software Engineering Intern",
-    company: "Samsung PRISM",
+    company: "Samsung PRISM - SRIB",
     timeline: "Jun 2025 - Aug 2025",
     description: [
-      "Built internal tools using Node.js and React for data visualization and reporting.",
-      "Assisted in developing REST APIs and database management using MongoDB.",
-      "Conducted code reviews and optimized application performance.",
+      "Contributed to the SmartThings LLM-Powered AI Search project under the SRIB-PRISM program.",
+      "Implemented semantic search using vector embeddings and Mini LLMs (TinyLlama, Phi-2) to understand user intent in natural language.",
+      "Developed a Retrieval-Augmented Generation (RAG) pipeline with FAISS/ChromaDB for contextual SmartThings device control.",
+      "Built a dynamic knowledge base from SmartThings capabilities and integrated prompt generation workflows.",
+      "Collaborated with mentors to design ranking and scoring systems, improving accuracy of device action suggestions.",
+      "Delivered final API integration enabling SmartThings to execute contextual commands.",
     ],
   },
 ];
