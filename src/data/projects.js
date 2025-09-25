@@ -41,7 +41,7 @@ export const projects = [
         desc: "Music streaming platform inspired by Spotify’s design.",
         live: "https://github.com/VishalBhat07/tune-box",
         status: "In Progress",
-        image: "/images/projects/tunebox.png",
+        image: "/images/projects/inprogress.png",
       },
       {
         name: "PassKeeper",
@@ -49,7 +49,7 @@ export const projects = [
         desc: "Password management tool with elegant design.",
         live: "https://github.com/VishalBhat07/pass-keeper",
         status: "In Progress",
-        image: "/images/projects/passkeeper.png",
+        image: "/images/projects/inprogress.png",
       },
       {
         name: "QuickCalc",
@@ -65,7 +65,7 @@ export const projects = [
         desc: "DSA progress tracker in a user-friendly format.",
         live: "https://github.com/VishalBhat07/algo-progress",
         status: "In Progress",
-        image: "/images/projects/algoprogress.png",
+        image: "/images/projects/inprogress.png",
       },
     ],
   },
