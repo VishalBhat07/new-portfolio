@@ -1,6 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { PlusIcon } from "lucide-react";
 
 export function ContactCard({
   title = "Contact With Us",
@@ -19,11 +18,6 @@ export function ContactCard({
       )}
       {...props}
     >
-      <PlusIcon className="absolute -top-3 -left-3 h-6 w-6 text-muted-foreground" />
-      <PlusIcon className="absolute -top-3 -right-3 h-6 w-6 text-muted-foreground" />
-      <PlusIcon className="absolute -bottom-3 -left-3 h-6 w-6 text-muted-foreground" />
-      <PlusIcon className="absolute -right-3 -bottom-3 h-6 w-6 text-muted-foreground" />
-
       <div className="flex flex-col justify-between lg:col-span-2">
         <div className="relative h-full space-y-4 px-4 py-8 md:p-8">
           <h1 className="text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
@@ -32,7 +26,7 @@ export function ContactCard({
           <p className="text-muted-foreground max-w-xl text-sm md:text-base lg:text-lg">
             {description}
           </p>
-          <div className="grid gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-col gap-1">
             {contactInfo?.map((info, index) => (
               <ContactInfo key={index} {...info} />
             ))}
@@ -54,13 +48,13 @@ export function ContactCard({
 
 function ContactInfo({ icon: Icon, label, value, className, ...props }) {
   return (
-    <div className={cn("flex items-center gap-3 py-3", className)} {...props}>
-      <div className="bg-muted/40 rounded-lg p-3">
-        <Icon className="h-5 w-5 text-primary" />
+    <div className={cn("flex items-center gap-3 py-2.5", className)} {...props}>
+      <div className="bg-muted/40 rounded-lg p-2.5 shrink-0">
+        <Icon className="h-4 w-4 text-primary" />
       </div>
-      <div>
+      <div className="min-w-0">
         <p className="font-medium text-foreground text-sm">{label}</p>
-        <p className="text-muted-foreground text-xs">{value}</p>
+        <p className="text-muted-foreground text-xs truncate">{value}</p>
       </div>
     </div>
   );

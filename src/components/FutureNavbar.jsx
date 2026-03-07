@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Github, Zap } from "lucide-react";
+import { Github, Linkedin, Zap } from "lucide-react";
 import { Frame } from "./ui/future-navbar";
 import FutureButton from "./ui/future-navbar";
 
@@ -99,13 +99,15 @@ function FutureNavbar() {
               )}
             />
             <div className="flex items-center -mt-3.5">
-              <FutureButton
-                shape="flat"
-                className="font-normal px-9 py-[0.45rem] text-xs"
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/in/vishalbhat07/"
               >
-                <div className="me-10">Search…</div>
-                <div className="ms-auto">⌘+k</div>
-              </FutureButton>
+                <FutureButton shape="flat" className="py-[0.45rem] px-6">
+                  <Linkedin className="size-4" />
+                </FutureButton>
+              </a>
               <a
                 target="_blank"
                 rel="noreferrer"

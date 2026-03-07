@@ -1,4 +1,4 @@
-import { MailIcon, PhoneIcon, MapPinIcon, Github, Linkedin, Code2, Send } from "lucide-react";
+import { MailIcon, PhoneIcon, MapPinIcon, Send } from "lucide-react";
 import { ContactCard } from "@/components/ui/contact-card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -15,27 +15,18 @@ function handleFormSubmit(e) {
 export default function Contact() {
   return (
     <section id="contact" className="py-12">
-      {/* Section Header */}
-      <div className="mb-10 text-center">
-        <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">
-          Get in{" "}
-          <span className="text-tokyo-purple">Touch</span>
-        </h2>
-        <p className="terminal-text text-tokyo-text-dim text-xs tracking-widest uppercase">
-          Let's build something great together
-        </p>
-      </div>
 
       {/* ContactCard */}
       <div className="mx-auto max-w-5xl px-4">
         <ContactCard
-          title="Get in touch"
-          description="Feel free to reach out for collaborations, opportunities, or just a friendly hello. I do my best to respond within 1 business day."
+          title="Let's work together"
+          description="Feel free to reach out for collaborations, opportunities, or just a friendly hello. I'll get back to you within a day."
           contactInfo={[
             {
               icon: MailIcon,
               label: "Email",
               value: "vishalkbhat.cs23@rvce.edu.in",
+              className: "col-span-full",
             },
             {
               icon: PhoneIcon,
@@ -46,7 +37,6 @@ export default function Contact() {
               icon: MapPinIcon,
               label: "Location",
               value: "Bengaluru, India",
-              className: "col-span-2",
             },
           ]}
         >
