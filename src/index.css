@@ -1,22 +1,98 @@
-:root {
-  /* Base Colors */
-  --color-bg: #fafafa; /* Soft off-white background */
-  --color-bg-alt: #ffffff; /* White for cards/containers */
-  --color-text: #111111; /* Almost black text for readability */
-  --color-text-secondary: #555555; /* Medium gray for secondary content */
-  --color-border: #ddd; /* Light gray borders */
-  --color-shadow: rgba(0, 0, 0, 0.05); /* Very soft shadow */
+@import "tailwindcss";
 
-  /* Accent and Highlights */
-  --color-accent: rgb(
-    206,
-    64,
-    95
-  ); /* Muted gray accent for interactive elements */
-  --color-accent-hover: rgb(159, 36, 62); /* Darker accent for hover/focus */
-
-  /* Smooth Transitions */
-  --transition-speed: 0.35s;
+html {
+  scroll-behavior: smooth;
 }
 
-/* #DD5025 #39120B #DAD0D1 */
+/* Offset for fixed navbar on anchor scroll */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+@theme {
+  --color-tokyo-bg: #0a0a0f;
+  --color-tokyo-card: #16161e;
+  --color-tokyo-purple: #bd93f9;
+  --color-tokyo-cyan: #00d2ff;
+  --color-tokyo-yellow: #f1fa8c;
+  --color-tokyo-border: #1a1b26;
+  --color-tokyo-text-dim: #787c99;
+
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* Glass card utility */
+.glass-card {
+  background: rgba(22, 22, 30, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(189, 147, 249, 0.1);
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  border-color: rgba(0, 210, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.05);
+}
+
+/* Scanline animation */
+.scanline {
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 210, 255, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: scan 8s linear infinite;
+  pointer-events: none;
+}
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Text glow utilities */
+.text-glow-purple {
+  text-shadow: 0 0 10px rgba(189, 147, 249, 0.5);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+/* Terminal text utility */
+.terminal-text {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Collapsible animations (Radix UI) */
+@keyframes collapsible-down {
+  from { height: 0; opacity: 0; }
+  to   { height: var(--radix-collapsible-content-height); opacity: 1; }
+}
+@keyframes collapsible-up {
+  from { height: var(--radix-collapsible-content-height); opacity: 1; }
+  to   { height: 0; opacity: 0; }
+}
+[data-state="open"] > .overflow-hidden  { animation: collapsible-down 220ms ease-out; }
+[data-state="closed"] > .overflow-hidden { animation: collapsible-up   180ms ease-in; }
+
+/* Hero glitch text */
+@keyframes glitch-1 {
+  0%   { transform: translate(0); }
+  20%  { transform: translate(-2px, 1px); }
+  40%  { transform: translate(1px, -1px); }
+  60%  { transform: translate(-1px, 2px); }
+  80%  { transform: translate(2px, -1px); }
+  100% { transform: translate(0); }
+}
+@keyframes glitch-2 {
+  0%   { transform: translate(0); }
+  25%  { transform: translate(2px, -2px); }
+  50%  { transform: translate(-1px, 1px); }
+  75%  { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}

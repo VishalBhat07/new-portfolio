@@ -41,4 +41,8 @@ export const skillsData = {
     { name: "Arduino", icon: Cpu },
     { name: "Raspberry Pi", icon: Cpu },
   ],
+  competitiveProgramming: [
+    { name: "LeetCode", icon: Code2 },
+    { name: "Codeforces", icon: Code2 },
+  ],
 };

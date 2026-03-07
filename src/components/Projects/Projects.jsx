@@ -1,26 +1,43 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { projects } from "../../data/projects";
-import styles from "./Projects.module.css";
-import { ArrowUpRight, Github } from "lucide-react";
+import { CardStack } from "../ui/card-stack";
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState(projects[0].category);
 
-  const activeProjects =
-    projects.find((stack) => stack.category === activeCategory)?.items || [];
+  const cardItems = useMemo(() => {
+    const stack = projects.find((s) => s.category === activeCategory);
+    return (stack?.items ?? []).map((proj, i) => ({
+      id:         `${activeCategory}-${i}`,
+      title:      proj.name,
+      description: proj.desc,
+      imageSrc:   proj.image,
+      href:       proj.live && proj.live !== proj.url ? proj.live : undefined,
+      githubHref: proj.url,
+      tag:        proj.status,
+    }));
+  }, [activeCategory]);
 
   return (
-    <section id="projects" className={styles.section}>
-      <h2 className={styles.headingMain}>My Projects</h2>
+    <section id="projects" className="mb-36">
+      {/* Section header */}
+      <div className="flex items-center space-x-4 mb-10">
+        <h2 className="terminal-text text-xl font-bold uppercase tracking-widest">
+          Active Projects
+        </h2>
+        <div className="grow h-px bg-tokyo-border" />
+      </div>
 
-      {/* Category Tabs */}
-      <div className={styles.tabs}>
+      {/* Category tabs */}
+      <div className="flex flex-wrap gap-2 mb-10">
         {projects.map((stack) => (
           <button
             key={stack.category}
             onClick={() => setActiveCategory(stack.category)}
-            className={`${styles.tab} ${
-              activeCategory === stack.category ? styles.activeTab : ""
+            className={`px-4 py-2 terminal-text text-xs uppercase tracking-wider rounded transition-all ${
+              activeCategory === stack.category
+                ? "bg-tokyo-purple text-tokyo-bg font-bold"
+                : "bg-tokyo-bg border border-tokyo-border text-tokyo-text-dim hover:border-tokyo-purple hover:text-tokyo-purple"
             }`}
           >
             {stack.category}
@@ -28,51 +45,21 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Project Cards */}
-      <div className={styles.cardsGrid}>
-        {activeProjects.map((proj) => (
-          <div key={proj.name} className={styles.card}>
-            <div className={styles.cardPreview}>
-              {proj.image ? (
-                <img
-                  src={proj.image}
-                  alt={`${proj.name} preview`}
-                  className={styles.previewImage}
-                />
-              ) : (
-                <span className={styles.previewPlaceholder}>
-                  {proj.name[0].toUpperCase()}
-                </span>
-              )}
-              <a
-                href={proj.live || proj.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.hoverArrow}
-              >
-                <ArrowUpRight size={20} />
-              </a>
-            </div>
-            <div className={styles.cardContent}>
-              <h3 className={styles.projectTitle}>{proj.name}</h3>
-              <p className={styles.projectDesc}>{proj.desc}</p>
-
-              <div className={styles.cardActions}>
-                <a
-                  href={proj.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.contributeBtn}
-                >
-                  <Github size={16} />
-                  Contribute
-                </a>
-                <span className={styles.status}>{proj.status}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Card stack — key remounts so cards spring in fresh on category switch */}
+      <CardStack
+        key={activeCategory}
+        items={cardItems}
+        initialIndex={0}
+        cardWidth={500}
+        cardHeight={320}
+        overlap={0.5}
+        spreadDeg={44}
+        maxVisible={7}
+        autoAdvance
+        intervalMs={2600}
+        pauseOnHover
+        showDots
+      />
     </section>
   );
 }

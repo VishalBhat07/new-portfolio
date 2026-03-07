@@ -1,24 +1,6 @@
-import styles from "./Contact.module.css";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Linkedin,
-  Github,
-  ExternalLink,
-} from "lucide-react";
+import { Send, Mail, MapPin, Phone } from "lucide-react";
 import { socials } from "../../data/socials";
 import { toast } from "react-toastify";
-
-const socialIcons = {
-  LinkedIn: <Linkedin size={20} />,
-  Github: <Github size={20} />,
-  Email: <Mail size={20} />,
-  LeetCode: <ExternalLink size={20} />,
-  CodeForces: <ExternalLink size={20} />,
-  CodingNinjas: <ExternalLink size={20} />,
-};
 
 function handleFormSubmit(e) {
   e.preventDefault();
@@ -27,70 +9,99 @@ function handleFormSubmit(e) {
 
 export default function Contact() {
   return (
-    <section id="contact" className={styles.section}>
-      <h2 className={styles.heading}>Get in Touch</h2>
-      <p className={styles.subtext}>
-        Have a project idea, collaboration, or just want to say hi? Reach out
-        through the form below or connect via my socials.
-      </p>
+    <section
+      id="contact"
+      className="glass-card p-12 rounded-3xl relative overflow-hidden"
+    >
+      <div className="scanline"></div>
+      <div className="max-w-2xl mx-auto text-center mb-12">
+        <h2 className="text-5xl font-bold text-white mb-4 tracking-tighter uppercase italic">
+          Transmit Signal
+        </h2>
+        <p className="terminal-text text-tokyo-text-dim text-xs tracking-widest uppercase">
+          Direct line to lead engineer
+        </p>
+      </div>
 
-      <div className={styles.row}>
-        {/* Contact Info */}
-        <div className={styles.infoCard}>
-          <div className={styles.infoItem}>
-            <Mail size={22} className={styles.icon} />
-            <span>vishalkbhat.cs23@rvce.edu.in</span>
-          </div>
-          <div className={styles.infoItem}>
-            <Phone size={22} className={styles.icon} />
-            <span>+91 7975806665</span>
-          </div>
-          <div className={styles.infoItem}>
-            <MapPin size={22} className={styles.icon} />
-            <span>Bengaluru, India</span>
-          </div>
+      {/* Contact Info Bar */}
+      <div className="max-w-3xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex items-center gap-3 justify-center p-3 bg-tokyo-bg/50 border border-tokyo-border rounded-lg">
+          <Mail size={16} className="text-tokyo-cyan" />
+          <span className="terminal-text text-xs text-tokyo-text-dim">
+            vishalkbhat.cs23@rvce.edu.in
+          </span>
+        </div>
+        <div className="flex items-center gap-3 justify-center p-3 bg-tokyo-bg/50 border border-tokyo-border rounded-lg">
+          <Phone size={16} className="text-tokyo-cyan" />
+          <span className="terminal-text text-xs text-tokyo-text-dim">
+            +91 7975806665
+          </span>
+        </div>
+        <div className="flex items-center gap-3 justify-center p-3 bg-tokyo-bg/50 border border-tokyo-border rounded-lg">
+          <MapPin size={16} className="text-tokyo-cyan" />
+          <span className="terminal-text text-xs text-tokyo-text-dim">
+            Bengaluru, India
+          </span>
+        </div>
+      </div>
 
-          <div className={styles.socials}>
-            {socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialButton}
-              >
-                {socialIcons[social.name] || <ExternalLink size={20} />}
-                <span>{social.display}</span>
-              </a>
-            ))}
+      {/* Social Links */}
+      <div className="max-w-3xl mx-auto mb-10 flex flex-wrap gap-3 justify-center">
+        {socials.map((social) => (
+          <a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-tokyo-bg border border-tokyo-border rounded-lg terminal-text text-xs text-tokyo-text-dim hover:border-tokyo-purple hover:text-tokyo-purple transition-colors"
+          >
+            {social.name}
+          </a>
+        ))}
+      </div>
+      <form onSubmit={handleFormSubmit} className="max-w-3xl mx-auto space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="terminal-text text-[10px] text-tokyo-cyan uppercase ml-2">
+              Source ID
+            </label>
+            <input
+              type="text"
+              placeholder="NAME / ALIAS"
+              required
+              className="w-full bg-tokyo-bg border border-tokyo-border rounded-lg p-4 focus:ring-1 focus:ring-tokyo-cyan focus:border-tokyo-cyan text-white placeholder-tokyo-text-dim/50 terminal-text text-sm outline-none"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="terminal-text text-[10px] text-tokyo-cyan uppercase ml-2">
+              Comms Protocol
+            </label>
+            <input
+              type="email"
+              placeholder="EMAIL ADDRESS"
+              required
+              className="w-full bg-tokyo-bg border border-tokyo-border rounded-lg p-4 focus:ring-1 focus:ring-tokyo-cyan focus:border-tokyo-cyan text-white placeholder-tokyo-text-dim/50 terminal-text text-sm outline-none"
+            />
           </div>
         </div>
-
-        {/* Contact Form */}
-        <form className={styles.form} onSubmit={handleFormSubmit}>
-          <input
-            type="text"
-            placeholder="Your Name"
-            className={styles.input}
-            required="true"
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            className={styles.input}
-            required="true"
-          />
+        <div className="space-y-2">
+          <label className="terminal-text text-[10px] text-tokyo-cyan uppercase ml-2">
+            Encrypted Payload
+          </label>
           <textarea
-            placeholder="Your Message"
-            rows="5"
-            className={styles.textarea}
-            required="true"
+            placeholder="YOUR MESSAGE..."
+            rows="4"
+            required
+            className="w-full bg-tokyo-bg border border-tokyo-border rounded-lg p-4 focus:ring-1 focus:ring-tokyo-cyan focus:border-tokyo-cyan text-white placeholder-tokyo-text-dim/50 terminal-text text-sm outline-none resize-none"
           ></textarea>
-          <button type="submit" className={styles.button}>
-            <Send size={16} /> Send Message
-          </button>
-        </form>
-      </div>
+        </div>
+        <button
+          type="submit"
+          className="w-full py-4 bg-tokyo-purple text-tokyo-bg font-black terminal-text uppercase tracking-widest rounded-lg hover:bg-tokyo-cyan transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+        >
+          <Send size={16} /> Initiate Transfer
+        </button>
+      </form>
     </section>
   );
 }

@@ -1,5 +1,10 @@
 export const socials = [
   {
+    name: "GitHub",
+    url: "https://github.com/VishalBhat07",
+    display: "github.com/VishalBhat07",
+  },
+  {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/vishalbhat07/",
     display: "linkedin.com/in/vishalbhat07/",
@@ -18,5 +23,10 @@ export const socials = [
     name: "CodingNinjas",
     url: "https://www.naukri.com/code360/profile/VishalBhat",
     display: "code360/profile/VishalBhat/",
+  },
+  {
+    name: "Email",
+    url: "mailto:vishalkbhat.cs23@rvce.edu.in",
+    display: "vishalkbhat.cs23@rvce.edu.in",
   },
 ];
