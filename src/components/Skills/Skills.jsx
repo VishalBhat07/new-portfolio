@@ -11,7 +11,7 @@ const Skills = () => {
       <div className="flex items-center space-x-4 mb-10">
         <div className="h-8 w-1 bg-tokyo-purple"></div>
         <h2 className="terminal-text text-xl font-bold uppercase tracking-widest">
-          Hardware Controls / Skills
+          Skills
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

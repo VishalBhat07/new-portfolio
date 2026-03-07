@@ -65,10 +65,10 @@ function FutureNavbar() {
               </a>
               <nav className="hidden lg:flex gap-6 font-medium text-sm">
                 <a href="#about" className="text-white hover:text-indigo-300 transition-colors">About</a>
-                <a href="#skills" className="text-white hover:text-indigo-300 transition-colors">Skills</a>
                 <a href="#experience" className="text-white hover:text-indigo-300 transition-colors">Experience</a>
                 <a href="#clubs" className="text-white hover:text-indigo-300 transition-colors">Clubs</a>
                 <a href="#projects" className="text-white hover:text-indigo-300 transition-colors">Projects</a>
+                <a href="#skills" className="text-white hover:text-indigo-300 transition-colors">Skills</a>
                 <a href="#contact" className="text-white hover:text-indigo-300 transition-colors">Contact</a>
               </nav>
               <div
@@ -142,10 +142,10 @@ function FutureNavbar() {
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm lg:hidden">
           <div className="flex flex-col items-center justify-center h-full gap-8 text-white text-xl font-medium">
             <a href="#about" onClick={() => setShowMenu(false)}>About</a>
-            <a href="#skills" onClick={() => setShowMenu(false)}>Skills</a>
             <a href="#experience" onClick={() => setShowMenu(false)}>Experience</a>
             <a href="#clubs" onClick={() => setShowMenu(false)}>Clubs</a>
             <a href="#projects" onClick={() => setShowMenu(false)}>Projects</a>
+            <a href="#skills" onClick={() => setShowMenu(false)}>Skills</a>
             <a href="#contact" onClick={() => setShowMenu(false)}>Contact</a>
             <button
               onClick={() => setShowMenu(false)}

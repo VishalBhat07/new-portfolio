@@ -45,10 +45,10 @@ function App() {
       </div>
       <main className="pt-24 pb-12 max-w-7xl mx-auto px-6">
         <About />
-        <Skills />
         <Experience />
         <Clubs />
         <Projects />
+        <Skills />
         <Contact />
       </main>
       <ProfileStream />

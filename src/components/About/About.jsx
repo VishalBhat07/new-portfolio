@@ -1,34 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Download, Github, ChevronDown } from "lucide-react";
-
-// ── Animated title with glitch effect ────────────────────────────────────────
-function GlitchText({ text, className = "" }) {
-  return (
-    <span className={`relative inline-block ${className}`}>
-      <span className="relative z-10">{text}</span>
-      <span
-        className="absolute top-0 left-0 z-0 opacity-70"
-        style={{
-          color: "#bb9af7",
-          clipPath: "inset(20% 0 30% 0)",
-          animation: "glitch-1 2.5s infinite linear alternate",
-        }}
-      >
-        {text}
-      </span>
-      <span
-        className="absolute top-0 left-0 z-0 opacity-50"
-        style={{
-          color: "#7dcfff",
-          clipPath: "inset(60% 0 0 0)",
-          animation: "glitch-2 3s infinite linear alternate-reverse",
-        }}
-      >
-        {text}
-      </span>
-    </span>
-  );
-}
+import { Download, Github, ArrowRight, ChevronDown } from "lucide-react";
 
 // ── Typing effect ────────────────────────────────────────────────────────────
 function TypeWriter({ words, speed = 100, pause = 2000 }) {
@@ -71,7 +42,7 @@ function TypeWriter({ words, speed = 100, pause = 2000 }) {
   );
 }
 
-// ── Floating particle dots ───────────────────────────────────────────────────
+// ── Subtle floating particle bg ──────────────────────────────────────────────
 function ParticleField() {
   const canvasRef = useRef(null);
 
@@ -93,14 +64,14 @@ function ParticleField() {
     resize();
     window.addEventListener("resize", resize);
 
-    const COUNT = 60;
+    const COUNT = 35;
     const particles = Array.from({ length: COUNT }, () => ({
       x: Math.random() * canvas.width / dpr,
       y: Math.random() * canvas.height / dpr,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      r: Math.random() * 1.5 + 0.5,
-      a: Math.random() * 0.4 + 0.1,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2,
+      r: Math.random() * 1.2 + 0.4,
+      a: Math.random() * 0.2 + 0.05,
     }));
 
     const draw = () => {
@@ -115,26 +86,9 @@ function ParticleField() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(125,207,255,${p.a})`;
+        ctx.fillStyle = `rgba(189,147,249,${p.a})`;
         ctx.fill();
       });
-
-      // Draw lines between close particles
-      for (let i = 0; i < COUNT; i++) {
-        for (let j = i + 1; j < COUNT; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(187,154,247,${0.08 * (1 - dist / 100)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
 
       animId = requestAnimationFrame(draw);
     };
@@ -158,10 +112,7 @@ function ParticleField() {
 function ScrollHint() {
   return (
     <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce z-20">
-      <span className="terminal-text text-[9px] text-tokyo-text-dim uppercase tracking-widest">
-        Scroll
-      </span>
-      <ChevronDown size={14} className="text-tokyo-text-dim" />
+      <ChevronDown size={16} className="text-tokyo-text-dim/50" />
     </div>
   );
 }
@@ -170,15 +121,16 @@ function ScrollHint() {
 export default function About() {
   return (
     <section id="about" className="relative mb-36 min-h-[85vh] flex items-center">
-      {/* Full-width particle bg */}
+      {/* Subtle particle bg */}
       <div className="absolute inset-0 rounded-3xl overflow-hidden">
         <ParticleField />
-        {/* Grid overlay */}
+        {/* Faint grid */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.025]"
           style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
           }}
         />
       </div>
@@ -186,31 +138,23 @@ export default function About() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 w-full">
         {/* Left — text */}
         <div className="lg:col-span-7 flex flex-col justify-center py-12">
-          {/* Badge */}
-          <div className="flex items-center gap-2 mb-6">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-2 animate-ping rounded-full bg-tokyo-cyan opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-tokyo-cyan" />
-            </span>
-            <span className="terminal-text text-[10px] text-tokyo-cyan uppercase tracking-[0.3em]">
-              Available for opportunities
-            </span>
-          </div>
+
+          {/* Eyebrow label */}
+          <p className="terminal-text text-[11px] text-tokyo-text-dim uppercase tracking-[0.25em] mb-6">
+            Computer Science · RVCE Bengaluru
+          </p>
 
           {/* Name */}
-          <h1 className="text-5xl md:text-7xl font-black mb-3 leading-[1.1] tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-black mb-4 leading-[1.05] tracking-tight">
             <span className="text-white/90">Hi, I'm</span>
             <br />
-            <GlitchText
-              text="Vishal Bhat"
-              className="text-tokyo-cyan text-glow-cyan"
-            />
+            <span className="text-tokyo-purple">Vishal Bhat</span>
           </h1>
 
           {/* Typing subtitle */}
           <div className="text-xl md:text-2xl mb-8 h-9">
             <span className="text-tokyo-text-dim">I build </span>
-            <span className="text-tokyo-purple font-bold">
+            <span className="text-tokyo-cyan font-semibold">
               <TypeWriter
                 words={[
                   "full-stack applications",
@@ -227,12 +171,10 @@ export default function About() {
 
           {/* Description */}
           <p className="text-base text-tokyo-text-dim max-w-lg leading-relaxed mb-10">
-            Computer Science student at{" "}
-            <span className="text-tokyo-purple font-semibold">RVCE</span>.
-            Specialising in full-stack development{" "}
-            <span className="text-tokyo-cyan">(MERN)</span> with 50+ projects
-            — from crypto trackers and AI apps to real-time chat systems and
-            hardware hacks.
+            CS undergrad at{" "}
+            <span className="text-white font-medium">RVCE, Bengaluru</span>.
+            I like turning ideas into things that actually work — clean code,
+            good UX, and software that people enjoy using.
           </p>
 
           {/* CTA buttons */}
@@ -240,39 +182,34 @@ export default function About() {
             <a
               href="/VishalBhat.pdf"
               download
-              className="group flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-tokyo-purple to-tokyo-cyan text-tokyo-bg font-bold terminal-text text-sm uppercase rounded-lg hover:shadow-[0_0_25px_rgba(187,154,247,0.4)] transition-all duration-300"
+              className="group flex items-center gap-2 px-6 py-3 bg-tokyo-purple text-tokyo-bg font-bold terminal-text text-sm uppercase rounded-lg hover:bg-tokyo-purple/90 transition-colors duration-200"
             >
-              <Download size={16} className="group-hover:animate-bounce" />
-              Download Resume
+              <Download size={15} className="group-hover:translate-y-0.5 transition-transform duration-200" />
+              Resume
             </a>
             <a
               href="https://github.com/VishalBhat07"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-7 py-3.5 border border-tokyo-border text-white/80 terminal-text text-sm uppercase rounded-lg hover:border-tokyo-cyan hover:text-tokyo-cyan hover:shadow-[0_0_15px_rgba(125,207,255,0.15)] transition-all duration-300"
+              className="group flex items-center gap-2 px-6 py-3 border border-tokyo-border text-white/70 terminal-text text-sm uppercase rounded-lg hover:border-tokyo-purple/60 hover:text-white transition-colors duration-200"
             >
-              <Github size={16} /> Visit GitHub
+              <Github size={15} />
+              GitHub
+              <ArrowRight size={13} className="opacity-0 group-hover:opacity-100 -ml-1 group-hover:ml-0 transition-all duration-200" />
             </a>
           </div>
         </div>
 
         {/* Right — portrait */}
         <div className="lg:col-span-5 flex items-center justify-center">
-          <div className="relative w-full max-w-md aspect-[4/5] rounded-2xl overflow-hidden group">
-            {/* Purple glow behind */}
-            <div className="absolute -inset-1 bg-gradient-to-br from-tokyo-purple/30 via-transparent to-tokyo-cyan/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          <div className="relative w-full max-w-sm aspect-[3/4] rounded-2xl overflow-hidden">
             <img
-              alt="Vishal Bhat Portrait"
-              className="relative z-10 w-full h-full object-cover rounded-2xl grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-90 transition-all duration-700"
-              src="/pfp.png"
+              alt="Vishal Bhat"
+              className="w-full h-full object-cover rounded-2xl grayscale contrast-110 brightness-80 hover:grayscale-0 hover:brightness-90 transition-all duration-500"
+              src="/pfp2.jpg"
             />
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 z-20 rounded-2xl bg-gradient-to-t from-tokyo-bg via-transparent to-transparent" />
-            {/* Bottom badge */}
-            <div className="absolute bottom-5 left-5 z-30 terminal-text text-[10px] text-tokyo-cyan bg-tokyo-bg/80 backdrop-blur-sm px-3 py-1.5 border border-tokyo-cyan/30 rounded-lg flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-tokyo-cyan animate-pulse" />
-              IDENTITY VERIFIED
-            </div>
+            {/* Natural bottom fade into page bg */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-tokyo-bg/70 via-transparent to-transparent" />
           </div>
         </div>
       </div>

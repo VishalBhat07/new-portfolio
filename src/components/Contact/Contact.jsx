@@ -1,107 +1,100 @@
-import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { MailIcon, PhoneIcon, MapPinIcon, Github, Linkedin, Code2, Send } from "lucide-react";
+import { ContactCard } from "@/components/ui/contact-card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { socials } from "../../data/socials";
 import { toast } from "react-toastify";
 
 function handleFormSubmit(e) {
   e.preventDefault();
-  toast.success("Message sent");
+  toast.success("Message sent! I'll get back to you soon.");
 }
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="glass-card p-12 rounded-3xl relative overflow-hidden"
-    >
-      <div className="scanline"></div>
-      <div className="max-w-2xl mx-auto text-center mb-12">
-        <h2 className="text-5xl font-bold text-white mb-4 tracking-tighter uppercase italic">
-          Transmit Signal
+    <section id="contact" className="py-12">
+      {/* Section Header */}
+      <div className="mb-10 text-center">
+        <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">
+          Get in{" "}
+          <span className="text-tokyo-purple">Touch</span>
         </h2>
         <p className="terminal-text text-tokyo-text-dim text-xs tracking-widest uppercase">
-          Direct line to lead engineer
+          Let's build something great together
         </p>
       </div>
 
-      {/* Contact Info Bar */}
-      <div className="max-w-3xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="flex items-center gap-3 justify-center p-3 bg-tokyo-bg/50 border border-tokyo-border rounded-lg">
-          <Mail size={16} className="text-tokyo-cyan" />
-          <span className="terminal-text text-xs text-tokyo-text-dim">
-            vishalkbhat.cs23@rvce.edu.in
-          </span>
-        </div>
-        <div className="flex items-center gap-3 justify-center p-3 bg-tokyo-bg/50 border border-tokyo-border rounded-lg">
-          <Phone size={16} className="text-tokyo-cyan" />
-          <span className="terminal-text text-xs text-tokyo-text-dim">
-            +91 7975806665
-          </span>
-        </div>
-        <div className="flex items-center gap-3 justify-center p-3 bg-tokyo-bg/50 border border-tokyo-border rounded-lg">
-          <MapPin size={16} className="text-tokyo-cyan" />
-          <span className="terminal-text text-xs text-tokyo-text-dim">
-            Bengaluru, India
-          </span>
-        </div>
-      </div>
-
-      {/* Social Links */}
-      <div className="max-w-3xl mx-auto mb-10 flex flex-wrap gap-3 justify-center">
-        {socials.map((social) => (
-          <a
-            key={social.name}
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-tokyo-bg border border-tokyo-border rounded-lg terminal-text text-xs text-tokyo-text-dim hover:border-tokyo-purple hover:text-tokyo-purple transition-colors"
-          >
-            {social.name}
-          </a>
-        ))}
-      </div>
-      <form onSubmit={handleFormSubmit} className="max-w-3xl mx-auto space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="terminal-text text-[10px] text-tokyo-cyan uppercase ml-2">
-              Source ID
-            </label>
-            <input
-              type="text"
-              placeholder="NAME / ALIAS"
-              required
-              className="w-full bg-tokyo-bg border border-tokyo-border rounded-lg p-4 focus:ring-1 focus:ring-tokyo-cyan focus:border-tokyo-cyan text-white placeholder-tokyo-text-dim/50 terminal-text text-sm outline-none"
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="terminal-text text-[10px] text-tokyo-cyan uppercase ml-2">
-              Comms Protocol
-            </label>
-            <input
-              type="email"
-              placeholder="EMAIL ADDRESS"
-              required
-              className="w-full bg-tokyo-bg border border-tokyo-border rounded-lg p-4 focus:ring-1 focus:ring-tokyo-cyan focus:border-tokyo-cyan text-white placeholder-tokyo-text-dim/50 terminal-text text-sm outline-none"
-            />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <label className="terminal-text text-[10px] text-tokyo-cyan uppercase ml-2">
-            Encrypted Payload
-          </label>
-          <textarea
-            placeholder="YOUR MESSAGE..."
-            rows="4"
-            required
-            className="w-full bg-tokyo-bg border border-tokyo-border rounded-lg p-4 focus:ring-1 focus:ring-tokyo-cyan focus:border-tokyo-cyan text-white placeholder-tokyo-text-dim/50 terminal-text text-sm outline-none resize-none"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          className="w-full py-4 bg-tokyo-purple text-tokyo-bg font-black terminal-text uppercase tracking-widest rounded-lg hover:bg-tokyo-cyan transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
+      {/* ContactCard */}
+      <div className="mx-auto max-w-5xl px-4">
+        <ContactCard
+          title="Get in touch"
+          description="Feel free to reach out for collaborations, opportunities, or just a friendly hello. I do my best to respond within 1 business day."
+          contactInfo={[
+            {
+              icon: MailIcon,
+              label: "Email",
+              value: "vishalkbhat.cs23@rvce.edu.in",
+            },
+            {
+              icon: PhoneIcon,
+              label: "Phone",
+              value: "+91 7975806665",
+            },
+            {
+              icon: MapPinIcon,
+              label: "Location",
+              value: "Bengaluru, India",
+              className: "col-span-2",
+            },
+          ]}
         >
-          <Send size={16} /> Initiate Transfer
-        </button>
-      </form>
+          <form onSubmit={handleFormSubmit} className="w-full space-y-4">
+            <div className="flex flex-col gap-2">
+              <Label className="text-foreground">Name</Label>
+              <Input
+                type="text"
+                placeholder="Your name"
+                required
+                className="bg-background text-foreground placeholder:text-muted-foreground"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label className="text-foreground">Email</Label>
+              <Input
+                type="email"
+                placeholder="your@email.com"
+                required
+                className="bg-background text-foreground placeholder:text-muted-foreground"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label className="text-foreground">Phone</Label>
+              <Input
+                type="tel"
+                placeholder="+91 00000 00000"
+                className="bg-background text-foreground placeholder:text-muted-foreground"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label className="text-foreground">Message</Label>
+              <Textarea
+                placeholder="What's on your mind?"
+                required
+                className="bg-background text-foreground placeholder:text-muted-foreground"
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2"
+            >
+              <Send size={15} />
+              Send Message
+            </Button>
+          </form>
+        </ContactCard>
+      </div>
     </section>
   );
 }

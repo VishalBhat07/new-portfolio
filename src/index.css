@@ -20,6 +20,32 @@ section[id] {
 
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
   --font-sans: "Inter", system-ui, sans-serif;
+
+  /* shadcn / contact-card design tokens — mapped to Tokyo Night palette */
+  --color-background: #0a0a0f;
+  --color-foreground: #e8e8f0;
+
+  --color-card: #16161e;
+  --color-card-foreground: #e8e8f0;
+
+  --color-muted: #1a1b26;
+  --color-muted-foreground: #787c99;
+
+  --color-border: #1a1b26;
+  --color-input: #1a1b26;
+  --color-ring: #bd93f9;
+
+  --color-primary: #bd93f9;
+  --color-primary-foreground: #0a0a0f;
+
+  --color-secondary: #1a1b26;
+  --color-secondary-foreground: #e8e8f0;
+
+  --color-accent: #1f2335;
+  --color-accent-foreground: #e8e8f0;
+
+  --color-destructive: #ff5555;
+  --color-destructive-foreground: #e8e8f0;
 }
 
 /* Glass card utility */
