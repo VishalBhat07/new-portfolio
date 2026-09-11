@@ -26,7 +26,7 @@ export const socials = [
   },
   {
     name: "Email",
-    url: "mailto:vishalkbhat.cs23@rvce.edu.in",
-    display: "vishalkbhat.cs23@rvce.edu.in",
+    url: "mailto:vishalbhat21092005@gmail.com",
+    display: "vishalbhat21092005@gmail.com",
   },
 ];

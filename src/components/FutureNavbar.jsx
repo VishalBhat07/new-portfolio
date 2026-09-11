@@ -12,8 +12,8 @@ function FutureNavbar() {
   const [showMenu, setShowMenu] = useState(false);
 
   // 🎨 Direct color constants
-  const primaryStroke = "#4f46e5"; // Indigo
-  const primaryFill = "rgba(79, 70, 229, 0.2)";
+  const primaryStroke = "#bd93f9"; // Tokyo Night Purple
+  const primaryFill = "rgba(189, 147, 249, 0.2)";
 
   return (
     <MobileMenuContext.Provider value={{ showMenu, setShowMenu }}>
@@ -25,7 +25,7 @@ function FutureNavbar() {
             paths={JSON.parse(
               `[{
                 "show": true,
-                "style": {"strokeWidth": "1", "stroke": "${primaryStroke}", "fill": "rgba(79,70,229,0.08)"},
+                "style": {"strokeWidth": "1", "stroke": "${primaryStroke}", "fill": "rgba(189,147,249,0.08)"},
                 "path":[["M","0","0"],["L","100% - 6","0"],["L","100% - 11","100% - 64"],["L","100% + 0","0% + 29"],["L","0","11"],["L","0","0"]]
               },{
                 "show": true,
@@ -60,16 +60,16 @@ function FutureNavbar() {
               )}
             />
             <div className="flex items-center mt-2.5 relative">
-              <a href="/" className="me-16 font-bold text-white no-underline">
-                Portfolio
+              <a href="/" className="me-16 font-bold text-white no-underline text-lg tracking-wide">
+                Vishal<span className="text-[#bd93f9]">.</span>
               </a>
               <nav className="hidden lg:flex gap-6 font-medium text-sm">
-                <a href="#about" className="text-white hover:text-indigo-300 transition-colors">About</a>
-                <a href="#experience" className="text-white hover:text-indigo-300 transition-colors">Experience</a>
-                <a href="#clubs" className="text-white hover:text-indigo-300 transition-colors">Clubs</a>
-                <a href="#projects" className="text-white hover:text-indigo-300 transition-colors">Projects</a>
-                <a href="#skills" className="text-white hover:text-indigo-300 transition-colors">Skills</a>
-                <a href="#contact" className="text-white hover:text-indigo-300 transition-colors">Contact</a>
+                <a href="#about" className="text-white hover:text-[#bd93f9] hover:text-glow-purple transition-all duration-300">About</a>
+                <a href="#experience" className="text-white hover:text-[#bd93f9] hover:text-glow-purple transition-all duration-300">Experience</a>
+                <a href="#clubs" className="text-white hover:text-[#bd93f9] hover:text-glow-purple transition-all duration-300">Clubs</a>
+                <a href="#projects" className="text-white hover:text-[#bd93f9] hover:text-glow-purple transition-all duration-300">Projects</a>
+                <a href="#skills" className="text-white hover:text-[#bd93f9] hover:text-glow-purple transition-all duration-300">Skills</a>
+                <a href="#contact" className="text-white hover:text-[#bd93f9] hover:text-glow-purple transition-all duration-300">Contact</a>
               </nav>
               <div
                 onClick={() => setShowMenu(true)}
@@ -89,7 +89,7 @@ function FutureNavbar() {
               paths={JSON.parse(
                 `[{
                   "show":true,
-                  "style":{"strokeWidth":"1","stroke":"${primaryStroke}80","fill":"rgba(79,70,229,0.1)"},
+                  "style":{"strokeWidth":"1","stroke":"${primaryStroke}80","fill":"rgba(189,147,249,0.1)"},
                   "path":[["M","19","0"],["L","100% - 5","0"],["L","100% + 0","0% + 7"],["L","100% - 36","100% - 20"],["L","0","100% - 20"],["L","25","8.999992370605469"],["L","19","1"]]
                 },{
                   "show":true,
@@ -127,7 +127,7 @@ function FutureNavbar() {
             paths={JSON.parse(
               `[{
                 "show":true,
-                "style":{"strokeWidth":"1","stroke":"${primaryStroke}E6","fill":"rgba(79,70,229,0.08)"},
+                "style":{"strokeWidth":"1","stroke":"${primaryStroke}E6","fill":"rgba(189,147,249,0.08)"},
                 "path":[["M","12","0"],["L","100% + 0","0"],["L","100% + 0","0% + 16"],["L","0","100% - 42"],["L","18","7"],["L","12","0"]]
               },{
                 "show":true,
@@ -141,7 +141,7 @@ function FutureNavbar() {
 
       {/* Mobile slide-out menu */}
       {showMenu && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm lg:hidden">
+        <div className="fixed inset-0 z-50 bg-[#0a0a0f]/90 backdrop-blur-md lg:hidden">
           <div className="flex flex-col items-center justify-center h-full gap-8 text-white text-xl font-medium">
             <a href="#about" onClick={() => setShowMenu(false)}>About</a>
             <a href="#experience" onClick={() => setShowMenu(false)}>Experience</a>
@@ -151,7 +151,7 @@ function FutureNavbar() {
             <a href="#contact" onClick={() => setShowMenu(false)}>Contact</a>
             <button
               onClick={() => setShowMenu(false)}
-              className="mt-8 text-sm text-indigo-400 underline"
+              className="mt-8 text-sm text-[#bd93f9] hover:text-glow-purple underline transition-all duration-300"
             >
               Close
             </button>
