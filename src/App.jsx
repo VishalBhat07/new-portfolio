@@ -1,14 +1,30 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowDownToLine, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import TechText from "./components/TechText/TechText";
 import { projects } from "./data/projects";
 import { socials } from "./data/socials";
 
-const featuredNames = ["NeuralShield", "AutoDoc", "Tomato"];
-const featuredProjects = featuredNames.map((name) =>
-  projects
-    .flatMap((group) => group.items)
-    .find((project) => project.name === name),
-);
+const featuredNames = [
+  "EdgeInference RL",
+  "IR-Repair",
+  "NeuralShield",
+  "CPU Scheduling Visualizer",
+  "AutoDoc",
+  "Sign-ify",
+];
+const allProjects = projects.flatMap((group) => group.items);
+const featuredProjects = featuredNames
+  .map((name) => allProjects.find((project) => project.name === name))
+  .filter(Boolean);
+const archiveGroups = projects
+  .map((group) => ({
+    category: group.category,
+    items: group.items.filter(
+      (project) => !featuredNames.includes(project.name),
+    ),
+  }))
+  .filter((group) => group.items.length > 0);
+const archiveCount = allProjects.length - featuredNames.length;
 
 const skillGroups = {
   Development: [
@@ -87,6 +103,7 @@ function Reveal({ children, className = "" }) {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [archiveOpen, setArchiveOpen] = useState(false);
   const [openExperience, setOpenExperience] = useState(null);
   const [scrolled, setScrolled] = useState(false);
 
@@ -144,7 +161,6 @@ function App() {
       <main id="top">
         <section className="hero section-wrap">
           <div className="hero-topline">
-            <span>Portfolio / 2026</span>
             <span className="status">
               <i /> Open to meaningful work
             </span>
@@ -153,9 +169,26 @@ function App() {
             <div className="hero-copy">
               <p className="eyebrow">Software engineer &amp; product builder</p>
               <h1>
-                Vishal
-                <br />
-                <em>Bhat</em>
+                <span className="sr-only">Vishal Bhat</span>
+                <TechText
+                  text="Vishal Bhat"
+                  fontFamily='"Space Grotesk", sans-serif'
+                  fontWeight={600}
+                  fontSize={180}
+                  letterSpacing={-0.06}
+                  align="left"
+                  accentColor="#777773"
+                  reveal="letter"
+                  reach={180}
+                  dashLength={4}
+                  dashGap={2}
+                  specks={12}
+                  clickKick
+                  intro="metrics"
+                  introDuration={1.8}
+                  guides={false}
+                  style={{ height: "clamp(110px, 16vw, 240px)" }}
+                />
               </h1>
               <p className="hero-intro">
                 Ex Software Engineering Intern @ LinkedIn. Ex Samsung PRISM.
@@ -188,48 +221,83 @@ function App() {
           </Reveal>
           <div className="project-list">
             {featuredProjects.map((project, index) => (
-              <Reveal
-                key={project.name}
-                className={`project project-${index + 1}`}
-              >
+              <Reveal key={project.name}>
                 <a
-                  className="project-image"
+                  className="project-row"
                   href={project.live || project.url}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img
-                    src={project.image}
-                    alt={`${project.name} project`}
-                    loading="lazy"
-                  />
-                </a>
-                <div className="project-info">
-                  <span className="project-index">0{index + 1} / 03</span>
-                  <h3>{project.name}</h3>
-                  <p>{project.desc}</p>
-                  <span className="project-meta">
-                    {index === 0
-                      ? "AI / Machine Learning"
-                      : index === 1
-                        ? "Developer tooling"
-                        : "Full-stack product"}
+                  <span className="project-index">0{index + 1}</span>
+                  <span className="project-body">
+                    <h3>{project.name}</h3>
+                    <p>{project.desc}</p>
+                    <span className="project-meta">
+                      {[project.status, ...(project.stack ?? [])].join(" · ")}
+                    </span>
                   </span>
-                  <div className="project-links">
-                    <a
-                      href={project.live || project.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View project <ArrowUpRight size={16} />
-                    </a>
-                    <a href={project.url} target="_blank" rel="noreferrer">
-                      GitHub <ArrowUpRight size={16} />
-                    </a>
-                  </div>
-                </div>
+                  <span className="project-arrow">
+                    <ArrowUpRight size={20} />
+                  </span>
+                </a>
               </Reveal>
             ))}
+          </div>
+          <div className="archive">
+            <button
+              className="archive-toggle"
+              type="button"
+              onClick={() => setArchiveOpen(!archiveOpen)}
+              aria-expanded={archiveOpen}
+            >
+              {archiveOpen
+                ? "Hide archive"
+                : `View all ${archiveCount} more projects`}
+              <span className={`plus ${archiveOpen ? "rotated" : ""}`}>+</span>
+            </button>
+            {archiveOpen && (
+              <div className="archive-panel">
+                {archiveGroups.map((group) => (
+                  <div className="archive-group" key={group.category}>
+                    <span className="archive-label">{group.category}</span>
+                    <ul>
+                      {group.items.map((project) => {
+                        const href =
+                          project.live && project.live !== "#"
+                            ? project.live
+                            : project.url;
+                        const linkable = href && href !== "#";
+                        const row = (
+                          <>
+                            <strong>{project.name}</strong>
+                            <span>{project.desc}</span>
+                            {project.status === "In Progress" && (
+                              <em>In progress</em>
+                            )}
+                          </>
+                        );
+                        return (
+                          <li key={project.name}>
+                            {linkable ? (
+                              <a
+                                className="archive-row"
+                                href={href}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {row}
+                              </a>
+                            ) : (
+                              <span className="archive-row">{row}</span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -359,31 +427,6 @@ function App() {
           </div>
         </section>
 
-        <section className="achievements section-wrap">
-          <Reveal className="section-heading">
-            <span className="section-number">06</span>
-            <h2>Proof of work</h2>
-            <span className="heading-rule" />
-          </Reveal>
-          <Reveal className="achievement-grid">
-            <p>
-              <strong>01</strong>NPTEL Data Science for Engineers
-              <br />
-              <span>Top 1%</span>
-            </p>
-            <p>
-              <strong>02</strong>CodeQuest RVCE
-              <br />
-              <span>2nd Place</span>
-            </p>
-            <p>
-              <strong>03</strong>Webathon
-              <br />
-              <span>Runner-up</span>
-            </p>
-          </Reveal>
-        </section>
-
         <section id="contact" className="contact section-wrap">
           <Reveal>
             <p className="eyebrow">Have a good idea?</p>
@@ -392,9 +435,19 @@ function App() {
               <br />
               <em>something.</em>
             </h2>
-            <a className="contact-link" href={social("Email")?.url}>
-              Get in touch <ArrowUpRight size={20} />
-            </a>
+            <div className="contact-actions">
+              <a className="contact-link" href={social("Email")?.url}>
+                Get in touch <ArrowUpRight size={20} />
+              </a>
+              <a
+                className="contact-link"
+                href="/VishalBhat.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Download resume <ArrowDownToLine size={18} />
+              </a>
+            </div>
             <p className="contact-details">
               <a href={social("Email")?.url}>vishalbhat21092005@gmail.com</a>
               <span>·</span>
