@@ -213,6 +213,29 @@ export const projects = [
     ],
   },
   {
+    category: "Research",
+    items: [
+      {
+        name: "EdgeInference RL",
+        url: "https://github.com/VaibhavPRoddappanavar/IDP",
+        desc: "Offline-RL policy that adapts YOLOv8 input resolution on a Raspberry Pi against CPU/thermal health — 61% less pixel compute for a 2.8% F1 drop.",
+        status: "Completed",
+      },
+      {
+        name: "Sign-ify",
+        url: "https://github.com/VishalBhat07/sign-ify",
+        desc: "Sign-language assistive conferencing hardened by an adaptive transport-security prototype: packet classes, rolling HKDF keys, verified parity recovery.",
+        status: "Completed",
+      },
+      {
+        name: "IR-Repair",
+        url: "https://github.com/VishalBhat07/llm-ir-repair-architecture",
+        desc: "Benchmark + validator + repair loop studying whether LLMs can lower a C subset into valid LLVM IR, across Ollama and Gemini backends.",
+        status: "Completed",
+      },
+    ],
+  },
+  {
     category: "Hackathons",
     items: [
       {
@@ -261,12 +284,10 @@ export const projects = [
         image: "/images/projects/botanycloud.png",
       },
       {
-        name: "Pothole Detection & Analysis",
-        url: "https://github.com/VishalBhat07",
-        desc: "Real-time YOLO detection on Raspberry Pi with backend segmentation models for pothole severity analysis.",
-        live: "https://github.com/VishalBhat07",
+        name: "PotholeGPS",
+        url: "https://github.com/VaibhavPRoddappanavar/IDP",
+        desc: "Pi 4B + Quectel GNSS field prototype — on pothole detection, uploads image, location, and timestamp to Firebase.",
         status: "Completed",
-        image: "/images/projects/potholedetection.png",
       },
     ],
   },
